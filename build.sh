@@ -9,7 +9,7 @@ pip install -r requirements.txt
 # Convert static asset files
 python manage.py collectstatic --no-input
 
-python supersu.py
+python3 supersu.py
 
 # Apply any outstanding database migrations
 python manage.py migrate
