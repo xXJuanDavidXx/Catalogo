@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Catálogo de Lociones{% endblock %}
+   
+{% block content %}
+<style>
+    .card-img-top {
+      height: 350px;
+      object-fit: cover;
+    }
+  </style>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Catálogo de Lociones</h1>
+    <div class="row">
+      {% for locion in lociones %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="{{ locion.imagen.url }}" class="card-img-top" alt="{{ locion.nombre }}">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-center fw-semibold">{{ locion.nombre }}</h5>
+              <div class="d-flex justify-content-center">
+                {% if profile %}
+                  <a type="button" class="btn btn-dark" href="https://wa.me/{{ profile.phone_number }}?text=Estoy%20interesado%20en%20la%20loción%20{{ locion.nombre }}" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                  </a>
+                {% else %}
+                  <a type="button" class="btn btn-dark" href="#" disabled>
+                    <i class="fab fa-whatsapp"></i> No hay teléfono disponible
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

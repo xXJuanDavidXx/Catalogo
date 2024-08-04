@@ -1,0 +1,30 @@
+<script>  
+function copiar(idTxt){
+   let blq = document.getElementById(idTxt);
+   let txt = blq.innerHTML;
+   //si no se quiere incluir código html usar innerText
+   let btn = event.target;
+   let btnLbl = btn.innerText;
+   navigator.clipboard.writeText(txt);
+   btn.innerHTML = "Copiado";
+   setTimeout(()=>btn.innerText = btnLbl, 1200);
+}
+</script>
+
+
+
+<body>              
+<div id="texto">
+<p>Este texto se puede copiar al clipboard usando el botón copiar<br>
+Lo fundamental es leer el innerHTML del bloque de donde se copiará <br>
+Y poner este texto en el clipboard usando el objeto clipboard del navegador.<br>
+El evento se puede asociar en el HTML o con addEventListener, aquí lo pongo por comodidad con HTML.<br>
+El resto muestra que se ha completado la acción con la etiqueta del botón 
+</p>
+</div>
+<button id="btnCopiar" onclick="copiar('texto')">Copiar</button>
+<body>
+
+
+
+
