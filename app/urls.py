@@ -18,4 +18,4 @@ urlpatterns = [
     path('', views.lista_lociones, name='lista_lociones'),
     path('copiar/', views.copiar, name='copiar')
 
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
