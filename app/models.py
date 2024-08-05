@@ -9,7 +9,7 @@ from django.db import models
 
 class Locion(models.Model):
     nombre = models.CharField(max_length=100)
-    imagen = models.ImageField(upload_to='lociones/')
+    imagen = models.ImageField(upload_to='')
 
     def __str__(self):
         return self.nombre
