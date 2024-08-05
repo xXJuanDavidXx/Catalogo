@@ -1,17 +1,9 @@
-import os
-import django
-from django.core.management import call_command
+from django.contrib.auth.models import User
 
-# Configura el entorno de Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'catalogo.settings')  # Cambia esto si es necesario
-django.setup()
-
-# Ejecuta el comando `createsuperuser` con opciones proporcionadas
-call_command(
-    'createsuperuser',
+# Crea el usuario
+user = User.objects.create_superuser(
     username='thegame',
     email='thegame@thegame.com',
-    password='thegame123',
-    interactive=False
-)
+    password='thegame123'
 
+user.save()
