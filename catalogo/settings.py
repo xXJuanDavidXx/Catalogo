@@ -16,7 +16,6 @@ from google.oauth2 import service_account
 import json
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +37,8 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'storages',
 ]
 
 
@@ -132,6 +134,7 @@ USE_TZ = True
 
 
 
+<<<<<<< HEAD
 google_credentials = json.loads(os.getenv('GOOGLE_CLOUD_CREDENTIALS'))
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(google_credentials)
@@ -155,6 +158,9 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
