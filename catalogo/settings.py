@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
-
+from google.oauth2 import service_account
+import json
 
 
 
@@ -129,7 +130,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+
+google_credentials = json.loads(os.getenv('GOOGLE_CLOUD_CREDENTIALS'))
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_info(google_credentials)
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+
+GS_BUCKET_NAME = 'catalologogo'
+
+STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
+MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
+
+
 
 if not DEBUG:    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -140,7 +154,6 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
 
 
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
