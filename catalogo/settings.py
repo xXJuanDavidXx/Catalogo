@@ -134,7 +134,6 @@ USE_TZ = True
 
 
 
-
 google_credentials = json.loads(os.getenv('GOOGLE_CLOUD_CREDENTIALS'))
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(google_credentials)
