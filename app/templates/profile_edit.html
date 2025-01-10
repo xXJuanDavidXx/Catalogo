@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Perfil{% endblock %}
+
+
+
+{% block content %}
+
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Tarjeta para el formulario de edición de perfil -->
+            <div class="col-md-6 mb-4">
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Editar Perfil</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-light">Guardar cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta para compartir el catálogo y copiar el enlace -->
+            <div class="col-md-6 mb-4">
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <p>Para compartir tu catálogo con tu número de teléfono a tus clientes, haz clic en el botón "Copiar enlace". El enlace copiado al portapapeles te permitirá enviar el catálogo que contiene tu número de teléfono. </p>
+                        <button id="copyButton" class="btn btn-outline-primary m-2">Copiar enlace</button>
+                        <input type="text" id="copyInput" value="{{ catalogo_url }}" style="position: absolute; left: -9999px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+        var copyInput = document.getElementById('copyInput');
+        copyInput.select();
+        document.execCommand('copy');
+        alert('Enlace copiado al portapapeles!');
+    });
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
